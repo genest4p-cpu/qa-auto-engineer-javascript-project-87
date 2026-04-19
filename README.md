@@ -1,8 +1,8 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/genest4p-cpu/qa-auto-engineer-javascript-project-87/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/genest4p-cpu/qa-auto-engineer-javascript-project-87/actions)
 [![Node CI](https://github.com/genest4p-cpu/qa-auto-engineer-javascript-project-87/actions/workflows/node-ci.yml/badge.svg)](https://github.com/genest4p-cpu/qa-auto-engineer-javascript-project-87/actions/workflows/node-ci.yml)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=genest4p-cpu&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=genest4p-cpu)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=genest4p-cpu&metric=coverage)](https://sonarcloud.io/summary/new_code?id=genest4p-cpu)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=genest4p-cpu&branch=main&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=genest4p-cpu&branch=main)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=genest4p-cpu&branch=main&metric=coverage)](https://sonarcloud.io/summary/new_code?id=genest4p-cpu&branch=main)
 
 ## Demo
 
