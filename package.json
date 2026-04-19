@@ -1,0 +1,39 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "[![Actions Status](https://github.com/genest4p-cpu/qa-auto-engineer-javascript-project-87/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/genest4p-cpu/qa-auto-engineer-javascript-project-87/actions)",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watch",
+    "test:coverage": "NODE_OPTIONS=--experimental-vm-modules jest --coverage",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/genest4p-cpu/qa-auto-engineer-javascript-project-87.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/genest4p-cpu/qa-auto-engineer-javascript-project-87/issues"
+  },
+  "homepage": "https://github.com/genest4p-cpu/qa-auto-engineer-javascript-project-87#readme",
+  "type": "module",
+  "bin": {
+    "gendiff": "bin/gendiff.js"
+  },
+  "dependencies": {
+    "commander": "^14.0.3",
+    "js-yaml": "^4.1.0",
+    "lodash": "^4.18.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.25.1",
+    "eslint": "^9.25.1",
+    "globals": "^16.0.0",
+    "jest": "^30.0.0"
+  }
+}
