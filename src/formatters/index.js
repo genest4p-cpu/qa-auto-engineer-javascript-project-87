@@ -12,7 +12,7 @@ const formatDiff = (diff, formatName = 'stylish') => {
   const formatter = formatters[formatName]
 
   if (!formatter) {
-    throw new Error(`Unsupported output format: ${formatName}`)
+    throw new Error(`Unsupported output format:${formatName}`)
   }
 
   return formatter(diff)
