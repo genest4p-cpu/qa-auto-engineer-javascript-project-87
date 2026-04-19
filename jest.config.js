@@ -7,4 +7,4 @@ export default {
   coverageReporters: ['json', 'lcov', 'text', 'clover'],
   collectCoverageFrom: ['index.js', 'src/**/*.js'],
   transform: {},
-};
+}
