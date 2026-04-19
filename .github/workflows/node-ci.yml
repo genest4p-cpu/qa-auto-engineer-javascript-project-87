@@ -34,6 +34,8 @@ jobs:
     needs: lint-and-test
     env:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      SONAR_ORGANIZATION: ${{ vars.SONAR_ORGANIZATION }}
+      SONAR_PROJECT_KEY: ${{ vars.SONAR_PROJECT_KEY }}
 
     steps:
       - name: Checkout
@@ -54,12 +56,16 @@ jobs:
         run: make test-coverage
 
       - name: SonarCloud is not configured
-        if: ${{ env.SONAR_TOKEN == '' }}
-        run: echo 'SONAR_TOKEN is not set, skipping SonarCloud scan'
+        if: ${{ env.SONAR_TOKEN == '' || env.SONAR_ORGANIZATION == '' || env.SONAR_PROJECT_KEY == '' }}
+        run: echo 'SONAR_TOKEN, SONAR_ORGANIZATION, or SONAR_PROJECT_KEY is not set, skipping SonarCloud scan'
 
       - name: SonarQube Scan
-        if: ${{ env.SONAR_TOKEN != '' }}
+        if: ${{ env.SONAR_TOKEN != '' && env.SONAR_ORGANIZATION != '' && env.SONAR_PROJECT_KEY != '' }}
         uses: SonarSource/sonarqube-scan-action@v6
+        with:
+          args: >
+            -Dsonar.organization=${{ env.SONAR_ORGANIZATION }}
+            -Dsonar.projectKey=${{ env.SONAR_PROJECT_KEY }}
         env:
           SONAR_TOKEN: ${{ env.SONAR_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
