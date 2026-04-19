@@ -1,4 +1,4 @@
-const formatValue = value => {
+const formatValue = (value) => {
   if (value !== null && typeof value === 'object') {
     return '[complex value]'
   }
@@ -10,7 +10,7 @@ const formatValue = value => {
   return String(value)
 }
 
-const plain = diff => {
+const plain = (diff) => {
   const lines = []
 
   for (let index = 0; index < diff.length; index += 1) {

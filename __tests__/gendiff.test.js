@@ -28,7 +28,8 @@ test('gendiff works with relative paths', () => {
 
   try {
     expect(genDiff('__fixtures__/file1.json', '__fixtures__/file2.json')).toBe(expectedStylish)
-  } finally {
+  }
+  finally {
     process.chdir(cwd)
   }
 })

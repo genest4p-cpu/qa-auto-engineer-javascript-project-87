@@ -3,7 +3,7 @@ import sortBy from 'lodash/sortBy.js'
 const buildDiff = (data1, data2) => {
   const keys = sortBy([...new Set([...Object.keys(data1), ...Object.keys(data2)])])
 
-  return keys.flatMap(key => {
+  return keys.flatMap((key) => {
     if (!(key in data2)) {
       return { key, type: 'removed', value: data1[key] }
     }

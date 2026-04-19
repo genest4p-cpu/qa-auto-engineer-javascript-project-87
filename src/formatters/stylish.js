@@ -6,7 +6,7 @@ const typeToPrefix = {
   unchanged: '    ',
 }
 
-const stylish = diff => {
+const stylish = (diff) => {
   const lines = diff.map(({ key, type, value }) => `${typeToPrefix[type]}${key}: ${formatValue(value)}`)
 
   return ['{', ...lines, '}'].join('\n')
