@@ -1,5 +1,7 @@
+import { isComplexValue } from '../utils.js'
+
 const formatValue = (value) => {
-  if (value !== null && typeof value === 'object') {
+  if (isComplexValue(value)) {
     return '[complex value]'
   }
 
@@ -10,34 +12,19 @@ const formatValue = (value) => {
   return String(value)
 }
 
-const plain = (diff) => {
-  const lines = []
+const plainFormatters = {
+  unchanged: () => null,
+  removed: ({ key }) => `Property '${key}' was removed`,
+  added: ({ key, value }) => `Property '${key}' was added with value: ${formatValue(value)}`,
+  changed: ({ key, oldValue, newValue }) => `Property '${key}' was updated. From ${formatValue(oldValue)} to ${formatValue(newValue)}`,
+}
 
-  for (let index = 0; index < diff.length; index += 1) {
-    const current = diff[index]
-    const next = diff[index + 1]
-
-    if (current.type === 'unchanged') {
-      continue
-    }
-
-    if (current.type === 'removed' && next && next.type === 'added' && next.key === current.key) {
-      lines.push(`Property '${current.key}' was updated. From ${formatValue(current.value)} to ${formatValue(next.value)}`)
-      index += 1
-      continue
-    }
-
-    if (current.type === 'removed') {
-      lines.push(`Property '${current.key}' was removed`)
-      continue
-    }
-
-    if (current.type === 'added') {
-      lines.push(`Property '${current.key}' was added with value: ${formatValue(current.value)}`)
-    }
-  }
+const formatPlain = (diff) => {
+  const lines = diff
+    .map((node) => plainFormatters[node.type](node))
+    .filter((line) => line !== null)
 
   return lines.join('\n')
 }
 
-export default plain
+export default formatPlain

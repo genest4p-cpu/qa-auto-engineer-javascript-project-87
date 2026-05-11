@@ -1,18 +1,18 @@
-import stylish from './stylish.js'
-import plain from './plain.js'
-import json from './json.js'
+import formatJson from './json.js'
+import formatPlain from './plain.js'
+import formatStylish from './stylish.js'
 
 const formatters = {
-  stylish,
-  plain,
-  json,
+  stylish: formatStylish,
+  plain: formatPlain,
+  json: formatJson,
 }
 
-const formatDiff = (diff, formatName = 'stylish') => {
-  const formatter = formatters[formatName]
+const formatDiff = (diff, outputFormat = 'stylish') => {
+  const formatter = formatters[outputFormat]
 
   if (!formatter) {
-    throw new Error(`Unsupported output format:${formatName}`)
+    throw new Error(`Unsupported output format: ${outputFormat}`)
   }
 
   return formatter(diff)

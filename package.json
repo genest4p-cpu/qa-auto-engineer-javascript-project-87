@@ -1,8 +1,8 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/genest4p-cpu/qa-auto-engineer-javascript-project-87/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/genest4p-cpu/qa-auto-engineer-javascript-project-87/actions)",
-  "main": "index.js",
+  "description": "CLI utility for comparing JSON and YAML configuration files and showing the difference in stylish, plain, or json formats.",
+  "main": "src/index.js",
   "scripts": {
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
     "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watch",

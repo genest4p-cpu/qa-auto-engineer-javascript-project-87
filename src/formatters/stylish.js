@@ -1,4 +1,4 @@
-const formatValue = value => String(value)
+const formatValue = (value) => String(value)
 
 const typeToPrefix = {
   added: '  + ',
@@ -6,10 +6,21 @@ const typeToPrefix = {
   unchanged: '    ',
 }
 
-const stylish = (diff) => {
-  const lines = diff.map(({ key, type, value }) => `${typeToPrefix[type]}${key}: ${formatValue(value)}`)
+const formatNode = ({ key, type, value, oldValue, newValue }) => {
+  if (type === 'changed') {
+    return [
+      `${typeToPrefix.removed}${key}: ${formatValue(oldValue)}`,
+      `${typeToPrefix.added}${key}: ${formatValue(newValue)}`,
+    ]
+  }
+
+  return [`${typeToPrefix[type]}${key}: ${formatValue(value)}`]
+}
+
+const formatStylish = (diff) => {
+  const lines = diff.flatMap((node) => formatNode(node))
 
   return ['{', ...lines, '}'].join('\n')
 }
 
-export default stylish
+export default formatStylish

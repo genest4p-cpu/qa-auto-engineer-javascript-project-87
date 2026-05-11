@@ -16,13 +16,9 @@
   },
   {
     "key": "timeout",
-    "type": "removed",
-    "value": 50
-  },
-  {
-    "key": "timeout",
-    "type": "added",
-    "value": 20
+    "type": "changed",
+    "oldValue": 50,
+    "newValue": 20
   },
   {
     "key": "verbose",
