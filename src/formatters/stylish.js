@@ -1,4 +1,4 @@
-const formatValue = (value) => String(value)
+const formatValue = value => String(value)
 
 const typeToPrefix = {
   added: '  + ',
@@ -18,7 +18,7 @@ const formatNode = ({ key, type, value, oldValue, newValue }) => {
 }
 
 const formatStylish = (diff) => {
-  const lines = diff.flatMap((node) => formatNode(node))
+  const lines = diff.flatMap(node => formatNode(node))
 
   return ['{', ...lines, '}'].join('\n')
 }

@@ -21,8 +21,8 @@ const plainFormatters = {
 
 const formatPlain = (diff) => {
   const lines = diff
-    .map((node) => plainFormatters[node.type](node))
-    .filter((line) => line !== null)
+    .map(node => plainFormatters[node.type](node))
+    .filter(line => line !== null)
 
   return lines.join('\n')
 }

@@ -1,3 +1,3 @@
-const isComplexValue = (value) => value !== null && typeof value === 'object'
+const isComplexValue = value => value !== null && typeof value === 'object'
 
 export { isComplexValue }
