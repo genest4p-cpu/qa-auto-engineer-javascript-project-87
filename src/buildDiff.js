@@ -1,7 +1,8 @@
 import sortBy from 'lodash/sortBy.js'
+import union from 'lodash/union.js'
 
 const buildDiff = (data1, data2) => {
-  const keys = sortBy([...new Set([...Object.keys(data1), ...Object.keys(data2)])])
+  const keys = sortBy(union(Object.keys(data1), Object.keys(data2)))
 
   return keys.map((key) => {
     if (!(key in data2)) {
@@ -19,8 +20,8 @@ const buildDiff = (data1, data2) => {
     return {
       key,
       type: 'changed',
-      oldValue: data1[key],
-      newValue: data2[key],
+      value1: data1[key],
+      value2: data2[key],
     }
   })
 }

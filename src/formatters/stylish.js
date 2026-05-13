@@ -1,24 +1,17 @@
 const formatValue = value => String(value)
 
-const typeToPrefix = {
-  added: '  + ',
-  removed: '  - ',
-  unchanged: '    ',
-}
-
-const formatNode = ({ key, type, value, oldValue, newValue }) => {
-  if (type === 'changed') {
-    return [
-      `${typeToPrefix.removed}${key}: ${formatValue(oldValue)}`,
-      `${typeToPrefix.added}${key}: ${formatValue(newValue)}`,
-    ]
-  }
-
-  return [`${typeToPrefix[type]}${key}: ${formatValue(value)}`]
+const stylishFormatters = {
+  unchanged: ({ key, value }) => [`    ${key}: ${formatValue(value)}`],
+  removed: ({ key, value }) => [`  - ${key}: ${formatValue(value)}`],
+  added: ({ key, value }) => [`  + ${key}: ${formatValue(value)}`],
+  changed: ({ key, value1, value2 }) => [
+    `  - ${key}: ${formatValue(value1)}`,
+    `  + ${key}: ${formatValue(value2)}`,
+  ],
 }
 
 const formatStylish = (diff) => {
-  const lines = diff.flatMap(node => formatNode(node))
+  const lines = diff.flatMap(node => stylishFormatters[node.type](node))
 
   return ['{', ...lines, '}'].join('\n')
 }

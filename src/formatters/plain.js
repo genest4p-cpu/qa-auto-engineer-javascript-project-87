@@ -16,7 +16,7 @@ const plainFormatters = {
   unchanged: () => null,
   removed: ({ key }) => `Property '${key}' was removed`,
   added: ({ key, value }) => `Property '${key}' was added with value: ${formatValue(value)}`,
-  changed: ({ key, oldValue, newValue }) => `Property '${key}' was updated. From ${formatValue(oldValue)} to ${formatValue(newValue)}`,
+  changed: ({ key, value1, value2 }) => `Property '${key}' was updated. From ${formatValue(value1)} to ${formatValue(value2)}`,
 }
 
 const formatPlain = (diff) => {
